@@ -23,6 +23,5 @@ jobs:
       
     - name: Print image sha256
       run: |
-          IMAGE_ID=$(docker images -q my-image-name:test)
-          SHA256=$(docker inspect --format='{{index .RepoDigests 0}}' $IMAGE_ID | cut -d '@' -f 2)
+          SHA256=$(docker inspect --format='{{index .RepoDigests 0}}' my-image-name:test | cut -d '@' -f 2)
           echo "Image sha256: $SHA256"
