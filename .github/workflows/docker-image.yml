@@ -16,10 +16,10 @@ jobs:
     - uses: actions/checkout@v3
     
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date)
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +\%s)
       
     - name: Print Repository Name
       run: echo "Repo Name:" ${{ github.event.repository.name }}
       
     - name: Get image digest
-      run: echo "Image digest:" $(docker inspect --format='{{index .RepoDigests 0}}' my-image-name:$(date))
+      run: echo "Image digest:" $(docker inspect --format='{{index .RepoDigests 0}}' my-image-name:$(date +\%s))
