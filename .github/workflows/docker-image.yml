@@ -20,3 +20,6 @@ jobs:
       
     - name: Print Repository Name
       run: echo "Repo Name:" ${{ github.event.repository.name }}
+      
+    - name: Get image digest
+      run: echo "Image digest:" $(docker inspect --format='{{index .RepoDigests 0}}' my-image-name:$(date +\%s))
